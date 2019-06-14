@@ -38,14 +38,16 @@ function parseItems(html){
                 target_url:$target_a.attr('href')
             })
         }
-    })
+    });
     return allData;
 }
 
 async function searchItems() {
     let res = await get(host);
     let allData = parseItems(res.data);
+    return allData;
 }
 
-searchItems();
-
+module.exports = {
+    searchItems
+}
