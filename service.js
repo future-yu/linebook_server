@@ -40,7 +40,7 @@ function parseItems(html){
         }
     });
     allData['items']=items;
-    let maxEl = $('.ptt td')[($('.ptt td').length-2)]
+    let maxEl = $('.ptt td')[($('.ptt td').length-2)];
     allData['max'] = $(maxEl).text();
     return allData;
 }
