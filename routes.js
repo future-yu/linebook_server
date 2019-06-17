@@ -1,6 +1,6 @@
 const Routes = require('koa-router');
-const {searchItems,getItemDetail,getThumbPage} = require('./service');
-const {formatUrl} = require('./utils')
+const {searchItems,getItemDetail,getThumbPage,getTagItems} = require('./service');
+const {formatUrl} = require('./utils');
 const {host} = require('./config');
 
 let router = new Routes();
@@ -27,6 +27,13 @@ router.get('/detail',async function (ctx,next) {
 router.get('/thumb/page',async function (ctx,next) {
     let query = ctx.request.query;
     ctx.body = await getThumbPage(query.target)
-})
+});
+
+
+router.get('/tag/item',async function (ctx,next) {
+    let query = ctx.request.query;
+    ctx.body = await searchItems(query.target)
+
+});
 
 module.exports = router;
