@@ -2,12 +2,15 @@ const Routes = require('koa-router');
 const {searchItems,getItemDetail,getThumbPage,getTagItems} = require('./service');
 const {formatUrl} = require('./utils');
 const {host} = require('./config');
+const fs = require('fs')
+const path = require('path')
 
 let router = new Routes();
 
+
 router.get('/',async function (ctx,next) {
-
-
+    ctx.type='text/html'
+    ctx.body = fs.readFileSync(path.join(__dirname,'./public/index.html'))
 });
 
 router.get('/search',async function (ctx,next) {
